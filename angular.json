@@ -1,6 +1,125 @@
 {
   "version": 1,
   "projects": {
+    "rep-admin": {
+      "projectType": "application",
+      "root": "apps/rep-admin",
+      "sourceRoot": "apps/rep-admin/src",
+      "prefix": "rep-select",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/rep-admin",
+            "index": "apps/rep-admin/src/index.html",
+            "main": "apps/rep-admin/src/main.ts",
+            "polyfills": "apps/rep-admin/src/polyfills.ts",
+            "tsConfig": "apps/rep-admin/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/rep-admin/src/favicon.ico",
+              "apps/rep-admin/src/assets"
+            ],
+            "styles": ["apps/rep-admin/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/rep-admin/src/environments/environment.ts",
+                  "with": "apps/rep-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "rep-admin:build:production"
+            },
+            "development": {
+              "browserTarget": "rep-admin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rep-admin:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/rep-admin/src/**/*.ts",
+              "apps/rep-admin/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/rep-admin"],
+          "options": {
+            "jestConfig": "apps/rep-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rep-admin-e2e": {
+      "root": "apps/rep-admin-e2e",
+      "sourceRoot": "apps/rep-admin-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rep-admin-e2e/cypress.json",
+            "tsConfig": "apps/rep-admin-e2e/tsconfig.e2e.json",
+            "devServerTarget": "rep-admin:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rep-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/rep-admin-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
     "rep-client": {
       "projectType": "application",
       "root": "apps/rep-client",

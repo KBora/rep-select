@@ -27,6 +27,13 @@
     ]
   },
   "projects": {
+    "rep-admin": {
+      "tags": []
+    },
+    "rep-admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["rep-admin"]
+    },
     "rep-client": {
       "tags": []
     },
