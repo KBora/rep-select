@@ -43,6 +43,9 @@
     },
     "rep-client-lib": {
       "tags": []
+    },
+    "rep-service": {
+      "tags": []
     }
   }
 }

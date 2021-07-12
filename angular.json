@@ -263,6 +263,56 @@
           }
         }
       }
+    },
+    "rep-service": {
+      "root": "apps/rep-service",
+      "sourceRoot": "apps/rep-service/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/rep-service",
+            "main": "apps/rep-service/src/main.ts",
+            "tsConfig": "apps/rep-service/tsconfig.app.json",
+            "assets": ["apps/rep-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/rep-service/src/environments/environment.ts",
+                  "with": "apps/rep-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "rep-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/rep-service/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/rep-service"],
+          "options": {
+            "jestConfig": "apps/rep-service/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
