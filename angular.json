@@ -119,6 +119,31 @@
           }
         }
       }
+    },
+    "rep-client-lib": {
+      "projectType": "library",
+      "root": "libs/rep-client-lib",
+      "sourceRoot": "libs/rep-client-lib/src",
+      "prefix": "rep-select",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rep-client-lib"],
+          "options": {
+            "jestConfig": "libs/rep-client-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/rep-client-lib/src/**/*.ts",
+              "libs/rep-client-lib/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

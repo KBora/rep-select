@@ -33,6 +33,9 @@
     "rep-client-e2e": {
       "tags": [],
       "implicitDependencies": ["rep-client"]
+    },
+    "rep-client-lib": {
+      "tags": []
     }
   }
 }
