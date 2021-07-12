@@ -46,6 +46,9 @@
     },
     "rep-service": {
       "tags": []
+    },
+    "shared-interfaces": {
+      "tags": []
     }
   }
 }

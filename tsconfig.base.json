@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rep-select/rep-client-lib": ["libs/rep-client-lib/src/index.ts"]
+      "@rep-select/rep-client-lib": ["libs/rep-client-lib/src/index.ts"],
+      "@rep-select/shared/interfaces": ["libs/shared/interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

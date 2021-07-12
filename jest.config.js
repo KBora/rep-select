@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/rep-client-lib',
     '<rootDir>/apps/rep-admin',
     '<rootDir>/apps/rep-service',
+    '<rootDir>/libs/shared/interfaces',
   ],
 };
